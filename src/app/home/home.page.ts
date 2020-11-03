@@ -16,13 +16,13 @@ interface List {
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  lists:List[];
-  constructor(private ref:ChangeDetectorRef,private listService:ListsService,private activatedRoute:ActivatedRoute, public modalController: ModalController) {
-    this.activatedRoute.data.subscribe(res=>{
+  lists: List[];
+  constructor(private ref: ChangeDetectorRef, private listService: ListsService, private activatedRoute: ActivatedRoute, public modalController: ModalController) {
+    this.activatedRoute.data.subscribe(res => {
       this.lists = res.lists;
     })
   }
-  async presentModal(listUrl:String, listTitle:String) {
+  async presentModal(listUrl: String, listTitle: String) {
     const modal = await this.modalController.create({
       component: ModalPage,
       componentProps: {
@@ -32,11 +32,10 @@ export class HomePage {
     });
     return await modal.present();
   }
-  delete(id:Number){
-    setTimeout(()=>{
-      this.listService.delete(id);
-      this.ref.detectChanges();
-    },2000)
+  delete(id: Number) {
+    console.log(id)
+    this.listService.delete(id);
+    this.ref.detectChanges();
   }
 
 }

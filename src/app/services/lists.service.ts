@@ -19,7 +19,8 @@ export class ListsService implements Resolve<any>{
   };
 
   delete(id:Number){
-    this.http.delete(`${this.url}/${id}`)
+    console.log(id);
+    this.http.delete(`${this.url}/${id}`);
   }
 
 }
